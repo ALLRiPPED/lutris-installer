@@ -1,4 +1,4 @@
-The one line Lutris installer.
+The one line Lutris installer. (NOT FOR ULTRA)
 
 [ Installation ]
 Just type: curl -sSL https://git.io/JEQbB | bash
