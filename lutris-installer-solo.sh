@@ -134,9 +134,10 @@ EOF99
 sudo chmod +x /home/pi/RetroPie/roms/lutris/lutris.sh
 
 sudo cp /etc/emulationstation/es_systems.cfg /etc/emulationstation/es_systems.cfg.bkp
+sudo cp /opt/retropie/configs/all/emulationstation/es_systems.cfg /opt/retropie/configs/all/emulationstation/es_systems.cfg.bkp 2>/dev/null
 sudo cp /etc/emulationstation/es_systems.cfg /tmp
 
-sudo cat /tmp/es_systems.cfg |grep -v "</systemList>" > /tmp/templist.xml
+cat /tmp/es_systems.cfg |grep -v "</systemList>" > /tmp/templist.xml
 
 ifexist=`cat /tmp/templist.xml |grep lutris |wc -l`
 if [[ ${ifexist} > 0 ]]; then
@@ -151,8 +152,8 @@ else
   echo "  </system>" >> /tmp/templist.xml
   echo "</systemList>" >> /tmp/templist.xml
   cp /tmp/templist.xml /opt/retropie/configs/all/emulationstation/es_systems.cfg
-  sudo cp /tmp/templist.xml /opt/retropie/configs/all/emulationstation/es_systems.cfg
-  sudo chown pi:pi -R /opt/retropie/configs/all/emulationstation/es_systems.cfg
+  sudo cp /tmp/templist.xml /etc/emulationstation/es_systems.cfg
+  sudo chown pi:pi /opt/retropie/configs/all/emulationstation/es_systems.* 2>/dev/null
 fi
 
 echo -e "$(tput setaf 2)
